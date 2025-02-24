@@ -1,0 +1,8 @@
+#define BIN_PATH "@BIN_PATH@"
+#define SOURCE_DIR "@CMAKE_SOURCE_DIR@"
+
+#include <string>
+
+std::string basic = std::string(SOURCE_DIR) + "\\" + std::string(BIN_PATH);
+std::string creatorExe = basic + "\\Creator.exe";
+std::string reporterExe = basic + "\\Reporter.exe";

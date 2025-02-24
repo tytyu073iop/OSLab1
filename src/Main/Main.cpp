@@ -4,6 +4,8 @@
 #include <vector>
 #include <windows.h>
 
+#include "ProgramPaths.h"
+
 struct employee {
     int num;        // Employee ID number
     char name[10];  // Employee name
@@ -46,15 +48,15 @@ int main() {
     std::string exe;
 
 
-    std::cout << "E t w to exe: ";
-    std::cin >> exe;
+    // std::cout << "E t w to exe: ";
+    // std::cin >> exe;
     std::cout << "Enter the name of the binary file: ";
     std::cin >> binaryFileName;
     std::cout << "Enter the number of records: ";
     std::cin >> numRecords;
 
     // Step 2: Run Creator
-    std::string creatorCmd = exe + " " + binaryFileName + " " + std::to_string(numRecords);
+    std::string creatorCmd = creatorExe + " " + binaryFileName + " " + std::to_string(numRecords);
     STARTUPINFO siCreator = { sizeof(siCreator) };
     PROCESS_INFORMATION piCreator;
 
@@ -70,7 +72,7 @@ int main() {
 
     std::cout << "closed Creator\n";
     CloseHandle(piCreator.hProcess);
-    CloseHandle(piCreator.hThread);
+    // CloseHandle(piCreator.hThread);
 
     // Step 4: Print binary file content
     printBinaryFileContent(binaryFileName);
@@ -79,15 +81,15 @@ int main() {
     std::string reportFileName;
     double hourlyRate;
 
-    std::cout << "E t w to exe: ";
-    std::cin >> exe;
+    // std::cout << "E t w to exe: ";
+    // std::cin >> exe;
     std::cout << "Enter the name of the report file: ";
     std::cin >> reportFileName;
     std::cout << "Enter the hourly rate: ";
     std::cin >> hourlyRate;
 
     // Step 6: Run Reporter
-    std::string reporterCmd = exe + " " + binaryFileName + " " + reportFileName + " " + std::to_string(hourlyRate);
+    std::string reporterCmd = reporterExe + " " + binaryFileName + " " + reportFileName + " " + std::to_string(hourlyRate);
     STARTUPINFO siReporter = { sizeof(siReporter) };
     PROCESS_INFORMATION piReporter;
 
@@ -100,7 +102,7 @@ int main() {
     // Step 7: Wait for Reporter to finish
     WaitForSingleObject(piReporter.hProcess, INFINITE);
     CloseHandle(piReporter.hProcess);
-    CloseHandle(piReporter.hThread);
+    // CloseHandle(piReporter.hThread);
 
     // Step 8: Print report file content
     printReportFileContent(reportFileName);

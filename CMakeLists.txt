@@ -1,7 +1,7 @@
 ﻿# CMakeList.txt: файл проекта CMake верхнего уровня; проведите глобальную конфигурацию
 # и включите сюда подпроекты.
 #
-cmake_minimum_required (VERSION 3.8)
+cmake_minimum_required (VERSION 3.30)
 
 # Включение горячей перезагрузки для компиляторов MSVC, если поддерживается.
 if (POLICY CMP0141)
@@ -12,6 +12,12 @@ endif()
 project ("OSLab1")
 
 # Включите подпроекты.
-add_subdirectory ("Creator")
-add_subdirectory ("Reporter")
-add_subdirectory ("Main")
+add_subdirectory ("src/Creator")
+add_subdirectory ("src/Reporter")
+add_subdirectory ("src/Main")
+
+# sets install default path to current repository
+set(CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}")
+set(BIN_PATH bin)
+
+install(TARGETS Creator Reporter Main DESTINATION ${BIN_PATH}) # P.S. install dir do not work

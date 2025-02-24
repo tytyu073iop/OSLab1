@@ -1,3 +1,8 @@
 out/build/x64-debug
 .vs
 .vscode
+CMakePresets.json
+build
+out
+bin
+.venv
