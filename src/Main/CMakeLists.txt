@@ -13,8 +13,6 @@ configure_file(ProgramPaths.h.in ProgramPaths.h)
 add_executable (Main "Main.cpp" )
 set_property(TARGET Main PROPERTY CXX_STANDARD 20)
 
-message(AUTHOR_WARNING ${PROJECT_BINARY_DIR})
-
 target_include_directories(Main PUBLIC
                            "${PROJECT_BINARY_DIR}"
                            )
