@@ -6,3 +6,5 @@ build
 out
 bin
 .venv
+fsd.bin
+fsd.txt

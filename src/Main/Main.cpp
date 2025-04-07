@@ -72,7 +72,7 @@ int main() {
 
     std::cout << "closed Creator\n";
     CloseHandle(piCreator.hProcess);
-    // CloseHandle(piCreator.hThread);
+    CloseHandle(piCreator.hThread);
 
     // Step 4: Print binary file content
     printBinaryFileContent(binaryFileName);
@@ -102,7 +102,7 @@ int main() {
     // Step 7: Wait for Reporter to finish
     WaitForSingleObject(piReporter.hProcess, INFINITE);
     CloseHandle(piReporter.hProcess);
-    // CloseHandle(piReporter.hThread);
+    CloseHandle(piReporter.hThread);
 
     // Step 8: Print report file content
     printReportFileContent(reportFileName);
